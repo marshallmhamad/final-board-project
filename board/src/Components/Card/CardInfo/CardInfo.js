@@ -14,7 +14,7 @@ import Editable from "../../Editabled/Editable";
 
 import "./CardInfo.css";
 import db from "../../../firebase";
-import { doc, updateDoc , collection , query, where,getDocs,arrayUnion} from "firebase/firestore";
+import { doc, updateDoc, collection, query, where, getDocs, arrayUnion } from "firebase/firestore";
 
 function CardInfo(props) {
   const colors = [
@@ -31,25 +31,23 @@ function CardInfo(props) {
   const [values, setValues] = useState({
     ...props.card,
   });
- 
+
 
   const updateTitle = (value) => {
     setValues({ ...values, title: value });
     const CardsDB = doc(db, "cards", values.id);
- updateDoc(CardsDB, {
-  title: value
-});
+    updateDoc(CardsDB, {
+      title: value
+    });
   };
 
- 
+
   const updateDesc = (value) => {
-     console.log(values.id);
-     let cardId = values.id;
-     console.log(cardId);
-const CardsDB = doc(db, "cards", cardId);
- updateDoc(CardsDB, {
-  description: value
-});
+    let cardId = values.id;
+    const CardsDB = doc(db, "cards", cardId);
+    updateDoc(CardsDB, {
+      description: value
+    });
     setValues({ ...values, description: value });
   };
 
@@ -74,18 +72,14 @@ const CardsDB = doc(db, "cards", cardId);
   };
 
   const addTask = (value) => {
+    console.log("here")
     const CardsDB = doc(db, "cards", values.id);
- updateDoc(CardsDB, {
-  tasks: arrayUnion(value)
-});
-    const task = {
-      id: Date.now() + Math.random() * 2,
-      completed: false,
-      text: value,
-    };
+    updateDoc(CardsDB, {
+      tasks: arrayUnion(value)
+    });
     setValues({
       ...values,
-      tasks: [...values.tasks, task],
+      tasks: [...values.tasks, value],
     });
   };
 
@@ -93,22 +87,22 @@ const CardsDB = doc(db, "cards", cardId);
     const tasks = [...values.tasks];
     console.log(id);
     console.log(values.id);
-  
+
     tasks.splice(id, 1);
     console.log(values.tasks);
     const CardsDB = doc(db, "cards", values.id);
     updateDoc(CardsDB, {
-     tasks: tasks
-   });
-     setValues({...values,tasks, });
+      tasks: tasks
+    });
+    setValues({ ...values, tasks, });
   };
 
   const updateDate = (date) => {
     if (!date) return;
     const CardsDB = doc(db, "cards", values.id);
     updateDoc(CardsDB, {
-     date: date
-   });
+      date: date
+    });
     setValues({
       ...values,
       date,
@@ -201,11 +195,11 @@ const CardsDB = doc(db, "cards", cardId);
             <CheckSquare />
             <p>Tasks</p>
           </div>
-          
+
           <div className="cardinfo_box_task_list">
-            {values.tasks?.map((item,index) => (
+            {values.tasks?.map((item, index) => (
               <div key={item.id} className="cardinfo_box_task_checkbox">
-               
+
                 <p className={item.completed ? "completed" : ""}>{item}</p>
                 <Trash onClick={() => removeTask(index)} />
               </div>
