@@ -13,6 +13,8 @@ import Modal from "../../Modal/Modal";
 import Editable from "../../Editabled/Editable";
 
 import "./CardInfo.css";
+import db from "../../../firebase";
+import { doc, updateDoc , collection , query, where,getDocs,arrayUnion} from "firebase/firestore";
 
 function CardInfo(props) {
   const colors = [
@@ -29,13 +31,26 @@ function CardInfo(props) {
   const [values, setValues] = useState({
     ...props.card,
   });
+ 
 
   const updateTitle = (value) => {
     setValues({ ...values, title: value });
+    const CardsDB = doc(db, "cards", values.id);
+ updateDoc(CardsDB, {
+  title: value
+});
   };
 
+ 
   const updateDesc = (value) => {
-    setValues({ ...values, desc: value });
+     console.log(values.id);
+     let cardId = values.id;
+     console.log(cardId);
+const CardsDB = doc(db, "cards", cardId);
+ updateDoc(CardsDB, {
+  description: value
+});
+    setValues({ ...values, description: value });
   };
 
   const addLabel = (label) => {
@@ -59,6 +74,10 @@ function CardInfo(props) {
   };
 
   const addTask = (value) => {
+    const CardsDB = doc(db, "cards", values.id);
+ updateDoc(CardsDB, {
+  tasks: arrayUnion(value)
+});
     const task = {
       id: Date.now() + Math.random() * 2,
       completed: false,
@@ -72,37 +91,24 @@ function CardInfo(props) {
 
   const removeTask = (id) => {
     const tasks = [...values.tasks];
-
-    const tempTasks = tasks.filter((item) => item.id !== id);
-    setValues({
-      ...values,
-      tasks: tempTasks,
-    });
-  };
-
-  const updateTask = (id, value) => {
-    const tasks = [...values.tasks];
-
-    const index = tasks.findIndex((item) => item.id === id);
-    if (index < 0) return;
-
-    tasks[index].completed = value;
-
-    setValues({
-      ...values,
-      tasks,
-    });
-  };
-
-  const calculatePercent = () => {
-    if (!values.tasks?.length) return 0;
-    const completed = values.tasks?.filter((item) => item.completed)?.length;
-    return (completed / values.tasks?.length) * 100;
+    console.log(id);
+    console.log(values.id);
+  
+    tasks.splice(id, 1);
+    console.log(values.tasks);
+    const CardsDB = doc(db, "cards", values.id);
+    updateDoc(CardsDB, {
+     tasks: tasks
+   });
+     setValues({...values,tasks, });
   };
 
   const updateDate = (date) => {
     if (!date) return;
-
+    const CardsDB = doc(db, "cards", values.id);
+    updateDoc(CardsDB, {
+     date: date
+   });
     setValues({
       ...values,
       date,
@@ -195,27 +201,13 @@ function CardInfo(props) {
             <CheckSquare />
             <p>Tasks</p>
           </div>
-          <div className="cardinfo_box_progress-bar">
-            <div
-              className="cardinfo_box_progress"
-              style={{
-                width: `${calculatePercent()}%`,
-                backgroundColor: calculatePercent() === 100 ? "limegreen" : "",
-              }}
-            />
-          </div>
+          
           <div className="cardinfo_box_task_list">
-            {values.tasks?.map((item) => (
+            {values.tasks?.map((item,index) => (
               <div key={item.id} className="cardinfo_box_task_checkbox">
-                <input
-                  type="checkbox"
-                  defaultChecked={item.completed}
-                  onChange={(event) =>
-                    updateTask(item.id, event.target.checked)
-                  }
-                />
-                <p className={item.completed ? "completed" : ""}>{item.text}</p>
-                <Trash onClick={() => removeTask(item.id)} />
+               
+                <p className={item.completed ? "completed" : ""}>{item}</p>
+                <Trash onClick={() => removeTask(index)} />
               </div>
             ))}
           </div>

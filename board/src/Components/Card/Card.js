@@ -11,7 +11,7 @@ function Card(props) {
   const [showModal, setShowModal] = useState(false);
 
   const { id, title, date, tasks, labels } = props.card;
-
+ console.log(tasks)
   const formatDate = (value) => {
     if (!value) return "";
     const date = new Date(value);
@@ -36,7 +36,7 @@ function Card(props) {
     const month = months[date.getMonth()];
     return day + " " + month;
   };
-
+ console.log(props);
   return (
     <>
       {showModal && (
@@ -61,6 +61,7 @@ function Card(props) {
                 {item.text}
               </label>
             ))}
+             
           </div>
           <div
             className="card_top_more"
@@ -83,18 +84,14 @@ function Card(props) {
           </div>
         </div>
         <div className="card_title">{title}</div>
+        <p>{props.card.description}</p>
         <div className="card_footer">
           {date && (
             <p className="card_footer_item">
               <Clock className="card_footer_icon" />
-              {formatDate(date)}
+              {formatDate(date)}  
             </p>
-          )}
-          {tasks && tasks?.length > 0 && (
-            <p className="card_footer_item">
-              <CheckSquare className="card_footer_icon" />
-              {tasks?.filter((item) => item.completed)?.length}/{tasks?.length}
-            </p>
+            
           )}
         </div>
       </div>
