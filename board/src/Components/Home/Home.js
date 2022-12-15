@@ -127,10 +127,11 @@ function Home(props) {
 
     addDoc(collection(db, "cards"), {
       boardId: id,
-      description: "newtask",
-      date: serverTimestamp(),
-      status: "done",
-      title: title
+      // description: "newtask",
+      // date: serverTimestamp(),
+      // status: "done",
+      title: title,
+      tasks : []
     });
     setBoards(boards);
 

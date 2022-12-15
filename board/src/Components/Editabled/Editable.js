@@ -5,7 +5,7 @@ import "./Editable.css";
 function Editable(props) {
   const [isEditable, setIsEditable] = useState(false);
   const [inputText, setInputText] = useState(props.defaultValue || "");
-
+// console.log(props);
   const submission = (e) => {
     e.preventDefault();
     if (inputText && props.onSubmit) {
