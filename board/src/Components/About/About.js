@@ -17,9 +17,7 @@ function About() {
       <div id="header">
         <h1>Our Team</h1>
       </div>
-      <div className="row">
-
-      </div>
+    
       <div className="row">
 
         {/* <!-- Column 1--> */}
@@ -60,7 +58,7 @@ function About() {
               <div class="img-container">
                 <img id="image" src={pic4} alt="team member " />
               </div>
-              <h3>Mhamad Marshal</h3>
+              <h3>Ali Ibrahim </h3>
               <p>Developer</p>
             </div>
           
