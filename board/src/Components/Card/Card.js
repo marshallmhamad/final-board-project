@@ -48,14 +48,14 @@ function Card(props) {
         />
       )}
       <div
-        className="card"
+        className="card1"
         draggable
         onDragEnd={() => props.dragEnded(props.boardId, id)}
         onDragEnter={() => props.dragEntered(props.boardId, id)}
         onClick={() => setShowModal(true)}
       >
-        <div className="card_top">
-          <div className="card_top_labels">
+        <div className="card1_top">
+          <div className="card1_top_labels">
             {labels?.map((item, index) => (
               <label key={index} style={{ backgroundColor: item.color }}>
                 {item.text}
@@ -64,7 +64,7 @@ function Card(props) {
              
           </div>
           <div
-            className="card_top_more"
+            className="card1_top_more"
             onClick={(event) => {
               event.stopPropagation();
               setShowDropdown(true);
@@ -83,11 +83,11 @@ function Card(props) {
             )}
           </div>
         </div>
-        <div className="card_title">{title}</div>
+        <div className="card1_title">{title}</div>
         <p>{props.card.description}</p>
-        <div className="card_footer">
+        <div className="card1_footer">
           {date && (
-            <p className="card_footer_item">
+            <p className="card1_footer_item">
               <Clock className="card_footer_icon" />
               {formatDate(date)}  
             </p>

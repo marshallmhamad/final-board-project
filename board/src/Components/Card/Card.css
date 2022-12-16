@@ -1,4 +1,4 @@
-.card {
+.card1 {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -7,12 +7,12 @@
   border-radius: 10px;
 }
 
-.card_top {
+.card1_top {
   display: flex;
   align-items: flex-start;
 }
 
-.card_top_labels {
+.card1_top_labels {
   flex: 3;
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +21,7 @@
   line-height: 21px;
 }
 
-.card_top_labels label {
+.card1_top_labels label {
   border-radius: 40px;
   padding: 4px 12px;
   background-color: gray;
@@ -29,7 +29,7 @@
   width: fit-content;
 }
 
-.card_top_more {
+.card1_top_more {
   width: 30px;
   height: 20px;
   transform: translateX(15px);
@@ -39,24 +39,24 @@
   transition: 200ms;
 }
 
-.card:hover .card_top_more {
+.card1:hover .card1_top_more {
   opacity: 1;
 }
 
-.card_title {
+.card1_title {
   flex: 1;
   font-weight: bold;
   font-size: 1rem;
   line-height: 1.875rem;
 }
 
-.card_footer {
+.card1_footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.card_footer_item {
+.card1_footer_item {
   border-radius: 40px;
   padding: 4px 12px;
   background-color: #f8f8f8;
@@ -69,12 +69,12 @@
   align-items: center;
 }
 
-.card_footer_icon {
+.card1_footer_icon {
   height: 13px;
   width: 13px;
 }
 
-.card_footer_user {
+.card1_footer_user {
   border-radius: 50%;
   height: 28px;
   width: 28px;
