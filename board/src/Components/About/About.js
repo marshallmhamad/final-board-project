@@ -17,14 +17,13 @@ function About() {
       <div id="header">
         <h1>Our Team</h1>
       </div>
-    
+
       <div className="row">
 
         {/* <!-- Column 1--> */}
         <div className="column">
 
-
-          <div className="card">
+          <div className="cardAbout">
             <div class="img-container">
               <img src={pic} alt="team member " />
             </div>
@@ -34,7 +33,7 @@ function About() {
         </div>
         {/* <!-- Column 2--> */}
         <div className="column">
-          <div class="card">
+          <div class="cardAbout">
             <div class="img-container">
               <img src={pic2} alt="team member" />
             </div>
@@ -45,26 +44,27 @@ function About() {
         </div>
         {/* <!-- Column 3--> */}
         <div className="column">
-          <div class="card">
+          <div class="cardAbout">
             <div class="img-container">
               <img src={pic3} alt="team member " />
             </div>
             <h3>Nisreen Hamzah</h3>
             <p>Developer</p>
           </div>
+        </div>
 
-          
-            <div id="forth" class="card">
-              <div class="img-container">
-                <img id="image" src={pic4} alt="team member " />
-              </div>
-              <h3>Ali Ibrahim </h3>
-              <p>Developer</p>
+        <div className="column">
+          <div class="cardAbout">
+            <div class="img-container">
+              <img src={pic4} alt="team member " />
             </div>
-          
-
+            <h3>Ali Ibrahim </h3>
+            <p>Developer</p>
+          </div>
         </div>
       </div>
+
+
     </div>
     //     <div className="about_container">
     //       <div className="about">

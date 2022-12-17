@@ -7,7 +7,6 @@ import LoginLogOut from "./Components/LoginSignin/LoginSignin"
 import Layout from "./Components/Layout/Layout";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LogIn } from "react-feather";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {

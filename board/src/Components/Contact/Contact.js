@@ -4,6 +4,8 @@ import React, { useState } from "react";
 // import Dropdown from "../Dropdown/Dropdown";
 // import Editable from "../Editabled/Editable";
 // import { MoreHorizontal } from "react-feather";
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
 import "./Contact.css";
 
 function Contact(props) {

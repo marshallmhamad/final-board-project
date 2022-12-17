@@ -11,7 +11,6 @@ function Card(props) {
   const [showModal, setShowModal] = useState(false);
 
   const { id, title, date, tasks, labels } = props.card;
- console.log(tasks)
   const formatDate = (value) => {
     if (!value) return "";
     const date = new Date(value);
@@ -36,7 +35,6 @@ function Card(props) {
     const month = months[date.getMonth()];
     return day + " " + month;
   };
- console.log(props);
   return (
     <>
       {showModal && (
@@ -48,23 +46,23 @@ function Card(props) {
         />
       )}
       <div
-        className="card1"
+        className="card"
         draggable
         onDragEnd={() => props.dragEnded(props.boardId, id)}
         onDragEnter={() => props.dragEntered(props.boardId, id)}
         onClick={() => setShowModal(true)}
       >
-        <div className="card1_top">
-          <div className="card1_top_labels">
+        <div className="card_top">
+          <div className="card_top_labels">
             {labels?.map((item, index) => (
               <label key={index} style={{ backgroundColor: item.color }}>
                 {item.text}
               </label>
             ))}
-             
+
           </div>
           <div
-            className="card1_top_more"
+            className="card_top_more"
             onClick={(event) => {
               event.stopPropagation();
               setShowDropdown(true);
@@ -83,15 +81,15 @@ function Card(props) {
             )}
           </div>
         </div>
-        <div className="card1_title">{title}</div>
+        <div className="card_title">{title}</div>
         <p>{props.card.description}</p>
-        <div className="card1_footer">
+        <div className="card_footer">
           {date && (
-            <p className="card1_footer_item">
+            <p className="card_footer_item">
               <Clock className="card_footer_icon" />
-              {formatDate(date)}  
+              {formatDate(date)}
             </p>
-            
+
           )}
         </div>
       </div>
