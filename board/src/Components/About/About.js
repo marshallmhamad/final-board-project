@@ -56,7 +56,7 @@ function About() {
         <div className="column">
           <div class="cardAbout">
             <div class="img-container">
-              <img src={pic4} alt="team member " />
+              <img id="forth" src={pic4} alt="team member " />
             </div>
             <h3>Ali Ibrahim </h3>
             <p>Developer</p>
